@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "workspace_title": "掉线补读",
+  "pages": [
+    {
+      "id": "console",
+      "title": "掉线补读控制台",
+      "description": "手动触发补读扫描：读取离线期间错过的消息，按时长和时段生成自然补聊。结果作为大肥鱼的消息直接发到对应聊天。",
+      "placement": "workspace",
+      "icon": "list",
+      "queries": {
+        "status": {
+          "api": "webui_status",
+          "version": "1"
+        }
+      },
+      "actions": {
+        "run3": {
+          "api": "webui_run_3h",
+          "version": "1",
+          "confirmation": "扫描最近 3 小时内错过的消息并补聊？"
+        },
+        "run24": {
+          "api": "webui_run_24h",
+          "version": "1",
+          "confirmation": "扫描最近 24 小时内错过的消息并补聊？"
+        }
+      },
+      "content": [
+        {
+          "type": "grid",
+          "columns": 3,
+          "children": [
+            {
+              "type": "stat",
+              "label": "已跟踪会话",
+              "value": {
+                "source": "status",
+                "field": "session_count"
+              }
+            },
+            {
+              "type": "stat",
+              "label": "累计补聊次数",
+              "value": {
+                "source": "status",
+                "field": "catchup_count"
+              }
+            },
+            {
+              "type": "stat",
+              "label": "测试模式",
+              "value": {
+                "source": "status",
+                "field": "dry_run"
+              }
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "label": "最近一次补读结果",
+          "children": [
+            {
+              "type": "text",
+              "value": {
+                "source": "status",
+                "field": "last_result"
+              }
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "label": "补读最近 3 小时",
+          "action": "run3"
+        },
+        {
+          "type": "button",
+          "label": "补读最近 24 小时",
+          "action": "run24"
+        },
+        {
+          "type": "text",
+          "value": "说明：补读结果会作为大肥鱼的消息直接发送到对应群聊/私聊。自动模式（开机/重启/掉线恢复后触发）无需手动操作。聊天里也可以用 /补读状态 和 /补读 指令。"
+        }
+      ]
+    }
+  ]
+}
