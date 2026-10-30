@@ -1,0 +1,46 @@
+{
+  "manifest_version": 2,
+  "version": "0.1.0",
+  "name": "掉线补读 (DaFeiyu Catchup)",
+  "description": "重新上线后自动读取离线期间错过的消息，结合离开时长与时段给出合理解释，用当前人设自然补聊一句",
+  "author": {
+    "name": "Lylecho",
+    "url": "https://github.com/Lylecho"
+  },
+  "license": "GPL-v3.0-or-later",
+  "urls": {
+    "repository": "https://github.com/Lylecho/dafeiyu-catchup",
+    "homepage": "https://github.com/Lylecho/dafeiyu-catchup",
+    "documentation": "https://github.com/Lylecho/dafeiyu-catchup",
+    "issues": "https://github.com/Lylecho/dafeiyu-catchup/issues"
+  },
+  "changelog": "CHANGELOG.md",
+  "host_application": {
+    "min_version": "1.3.0",
+    "max_version": "1.3.99"
+  },
+  "sdk": {
+    "min_version": "2.0.0",
+    "max_version": "2.99.99"
+  },
+  "dependencies": [],
+  "capabilities": [
+    "send.text",
+    "llm.generate",
+    "chat.get_all_streams",
+    "chat.get_group_streams",
+    "chat.get_private_streams",
+    "message.get_recent",
+    "message.get_by_time_in_chat",
+    "message.build_readable",
+    "message.count_new"
+  ],
+  "i18n": {
+    "default_locale": "zh-CN",
+    "locales_path": "_locales",
+    "supported_locales": [
+      "zh-CN"
+    ]
+  },
+  "id": "dafeiyu-team.dafeiyu-catchup"
+}
